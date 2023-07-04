@@ -21,6 +21,10 @@ public class Filesystem_Marciel16072711k implements IFilesystem_Marciel16072711k
     private List<User_Marciel16072711k> users = new ArrayList<>();
 
 
+
+
+
+
     public Filesystem_Marciel16072711k(String nombre) {
         this.nombre = nombre;
         this.fechaCreacion = new Date();
@@ -46,6 +50,15 @@ public class Filesystem_Marciel16072711k implements IFilesystem_Marciel16072711k
         for (User_Marciel16072711k user : users) {
             if (user.getUsername() == username) {
                 user.login();
+            }
+        }
+    }
+
+    @Override
+    public void logout() {
+        for (User_Marciel16072711k user : users) {
+            if (user.isEstaLogeado() == true) {
+                user.logoff();
             }
         }
     }

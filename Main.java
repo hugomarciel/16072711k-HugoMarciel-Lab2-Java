@@ -28,7 +28,12 @@ public class Main {
         System.out.println(fileSystem);
 
 
-// switchDrive the 
+        // logout
+        fileSystem.logout();
+        System.out.println(fileSystem);
+
+
+// switchDrive the
         fileSystem.switchDrive("C");
         System.out.println(fileSystem);
 

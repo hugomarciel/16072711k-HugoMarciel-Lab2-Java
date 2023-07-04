@@ -9,6 +9,8 @@ public interface IFilesystem_Marciel16072711k {
 
 
     void login(String username);
+
+    void logout();
     void switchDrive(String letter);
 
 
