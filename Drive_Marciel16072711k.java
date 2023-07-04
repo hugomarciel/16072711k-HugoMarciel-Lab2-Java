@@ -9,14 +9,14 @@ public class Drive_Marciel16072711k {
     private int capacity;
 
 
-    private boolean esDriveActual;
+
 
 
     public Drive_Marciel16072711k(String letter, String name, int capacity) {
         this.letter = letter;
         this.name = name;
         this.capacity = capacity;
-        this.esDriveActual = false;
+
     }
 
 
@@ -50,9 +50,7 @@ public class Drive_Marciel16072711k {
     }
 
 
-    public void switchDrive() {
-        this.esDriveActual = true;
-    }
+
 
 
 
@@ -63,7 +61,6 @@ public class Drive_Marciel16072711k {
                 "letter='" + letter + '\'' +
                 ", name='" + name + '\'' +
                 ", capacity=" + capacity +
-                ", esDriveActual=" + esDriveActual +
                 '}';
     }
 }

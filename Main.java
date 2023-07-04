@@ -32,6 +32,10 @@ public class Main {
         fileSystem.logout();
         System.out.println(fileSystem);
 
+        // login
+        fileSystem.login("Hugo");
+        System.out.println(fileSystem);
+
 
 // switchDrive the
         fileSystem.switchDrive("C");

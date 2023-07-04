@@ -14,12 +14,15 @@ public class Filesystem_Marciel16072711k implements IFilesystem_Marciel16072711k
 
     private Date fechaCreacion;
 
+    private List<User_Marciel16072711k> users = new ArrayList<>();
+
 
     private List<Drive_Marciel16072711k> drives = new ArrayList<>();
 
 
-    private List<User_Marciel16072711k> users = new ArrayList<>();
-
+    private boolean isLogged;
+    private String currentDrive;
+    private String currentPath;
 
 
 
@@ -50,6 +53,7 @@ public class Filesystem_Marciel16072711k implements IFilesystem_Marciel16072711k
         for (User_Marciel16072711k user : users) {
             if (user.getUsername() == username) {
                 user.login();
+                this.isLogged = true;
             }
         }
     }
@@ -59,6 +63,7 @@ public class Filesystem_Marciel16072711k implements IFilesystem_Marciel16072711k
         for (User_Marciel16072711k user : users) {
             if (user.isEstaLogeado() == true) {
                 user.logoff();
+                this.isLogged=false;
             }
         }
     }
@@ -70,7 +75,10 @@ public class Filesystem_Marciel16072711k implements IFilesystem_Marciel16072711k
             if (user.isEstaLogeado() == true) {
                 for (Drive_Marciel16072711k drive : drives) {
                     if (drive.getLetter() == letter) {
-                        drive.switchDrive();
+                       // drive.switchDrive();
+                        this.currentDrive = letter;
+                        this.currentPath= letter;
+
                     }
                 }
             }
@@ -83,8 +91,11 @@ public class Filesystem_Marciel16072711k implements IFilesystem_Marciel16072711k
         return "Filesystem_Marciel16072711k{" +
                 "nombre='" + nombre + '\'' +
                 ", fechaCreacion=" + fechaCreacion +
-                ", drives=" + drives +
                 ", users=" + users +
+                ", drives=" + drives +
+                ", isLogged=" + isLogged +
+                ", currentDrive='" + currentDrive + '\'' +
+                ", currentPath='" + currentPath + '\'' +
                 '}';
     }
 }
