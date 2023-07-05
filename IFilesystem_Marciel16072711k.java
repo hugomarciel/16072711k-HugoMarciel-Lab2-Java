@@ -14,5 +14,5 @@ public interface IFilesystem_Marciel16072711k {
 
     void switchDrive(String letter);
 
-
+    void mkDir(String name);
 }

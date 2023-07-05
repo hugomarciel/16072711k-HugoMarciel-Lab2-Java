@@ -19,6 +19,10 @@ public class Filesystem_Marciel16072711k implements IFilesystem_Marciel16072711k
 
     private List<Drive_Marciel16072711k> drives = new ArrayList<>();
 
+    private List<Folder_Marciel16072711k> folders = new ArrayList<>();
+
+    private String currentUser;
+
 
     private boolean isLogged;
     private String currentDrive;
@@ -31,6 +35,9 @@ public class Filesystem_Marciel16072711k implements IFilesystem_Marciel16072711k
     public Filesystem_Marciel16072711k(String nombre) {
         this.nombre = nombre;
         this.fechaCreacion = new Date();
+        this.currentPath = "C:/";
+        this.currentDrive= "C:/";
+        this.currentUser= "";
     }
 
 
@@ -54,6 +61,7 @@ public class Filesystem_Marciel16072711k implements IFilesystem_Marciel16072711k
             if (user.getUsername() == username) {
                 user.login();
                 this.isLogged = true;
+                this.currentUser = username;
             }
         }
     }
@@ -64,6 +72,7 @@ public class Filesystem_Marciel16072711k implements IFilesystem_Marciel16072711k
             if (user.isEstaLogeado() == true) {
                 user.logoff();
                 this.isLogged=false;
+                this.currentUser = "";
             }
         }
     }
@@ -76,14 +85,67 @@ public class Filesystem_Marciel16072711k implements IFilesystem_Marciel16072711k
                 for (Drive_Marciel16072711k drive : drives) {
                     if (drive.getLetter() == letter) {
                        // drive.switchDrive();
-                        this.currentDrive = letter;
-                        this.currentPath= letter;
+                        this.currentDrive = letter + ":/";
+                        this.currentPath= letter + ":/";
 
                     }
                 }
             }
         }
     }
+ public void mkDir(String name){
+
+     Folder_Marciel16072711k folder = new Folder_Marciel16072711k(name,this.currentUser, this.currentDrive,this.currentPath );
+     folders.add(folder);
+
+ }
+
+
+
+    //@Override
+    public void cd(String comando) {
+
+        if (comando == "..") {
+            if(this.currentDrive != this.currentPath){
+            System.out.println("Dos puntoooos");}
+        } else if (comando == "/") {
+            System.out.println("SLAAAASHH");
+        } else  {
+
+            this.cdFolder( comando);
+
+
+        }
+    }
+
+    public void cdFolder(String folderName){
+        System.out.println("otra cosa");
+        for(Folder_Marciel16072711k folder : folders){
+            if(folder.getNombre() == folderName){
+                this.currentPath = folder.getCurrentPath();
+                this.currentDrive =folder.getCurrentDrive();
+            }
+
+        }
+
+
+    }
+    /*    for (User_Marciel16072711k user : users) {
+            if (user.isEstaLogeado() == true) {
+                for (Drive_Marciel16072711k drive : drives) {
+                    if (drive.getLetter() == letter) {
+                        // drive.switchDrive();
+                        this.currentDrive = letter + ":/";
+                        this.currentPath= letter + ":/";
+
+                    }
+                }
+            }
+        }
+    }
+
+     */
+
 
 
     @Override
@@ -93,7 +155,9 @@ public class Filesystem_Marciel16072711k implements IFilesystem_Marciel16072711k
                 ", fechaCreacion=" + fechaCreacion +
                 ", users=" + users +
                 ", drives=" + drives +
+                ", folders=" + folders +
                 ", isLogged=" + isLogged +
+                ", currentUser='" + currentUser + '\'' +
                 ", currentDrive='" + currentDrive + '\'' +
                 ", currentPath='" + currentPath + '\'' +
                 '}';

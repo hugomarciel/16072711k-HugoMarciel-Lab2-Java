@@ -41,7 +41,13 @@ public class Main {
         fileSystem.switchDrive("C");
         System.out.println(fileSystem);
 
+// mkDir
+        fileSystem.mkDir("folder1");
+        System.out.println(fileSystem);
 
+// cd
+        fileSystem.cd("folder1");
+        System.out.println(fileSystem);
 
 
     }
