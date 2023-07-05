@@ -80,13 +80,17 @@ public class Filesystem_Marciel16072711k implements IFilesystem_Marciel16072711k
 
     @Override
     public void switchDrive(String letter) {
+        //System.out.println(letter);
+
         for (User_Marciel16072711k user : users) {
             if (user.isEstaLogeado() == true) {
                 for (Drive_Marciel16072711k drive : drives) {
-                    if (drive.getLetter() == letter) {
+                    System.out.println(drive.getLetter());
+                    String str = drive.getLetter();
+                    if (str.equals(letter) ) {
                        // drive.switchDrive();
-                        this.currentDrive = letter + ":/";
-                        this.currentPath= letter + ":/";
+                        this.currentDrive = letter;
+                        this.currentPath= letter;
 
                     }
                 }
@@ -119,10 +123,11 @@ public class Filesystem_Marciel16072711k implements IFilesystem_Marciel16072711k
     }
 
     public void cdFolder(String folderName){
-        System.out.println("otra cosa");
+        //System.out.println(folderName);
+        //System.out.println();
         for(Folder_Marciel16072711k folder : folders){
             if(folder.getNombre() == folderName){
-                this.currentPath = folder.getCurrentPath();
+                this.currentPath = folder.getCurrentPath()+folderName+"/";
                 this.currentDrive =folder.getCurrentDrive();
             }
 

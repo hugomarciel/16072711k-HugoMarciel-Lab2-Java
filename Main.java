@@ -38,17 +38,29 @@ public class Main {
 
 
 // switchDrive the
-        fileSystem.switchDrive("C");
+        fileSystem.switchDrive("D:/");
         System.out.println(fileSystem);
 
 // mkDir
         fileSystem.mkDir("folder1");
         System.out.println(fileSystem);
 
+
+
+
+
 // cd
         fileSystem.cd("folder1");
         System.out.println(fileSystem);
 
+        // mkDir
+        fileSystem.mkDir("folder2");
+        System.out.println(fileSystem);
+
+
+// cd
+        fileSystem.cd("folder2");
+        System.out.println(fileSystem);
 
     }
 }

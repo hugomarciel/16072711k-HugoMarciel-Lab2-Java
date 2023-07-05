@@ -13,7 +13,7 @@ public class Drive_Marciel16072711k implements IDrive_Marciel16072711k{
 
 
     public Drive_Marciel16072711k(String letter, String name, int capacity) {
-        this.letter = letter +":/";
+        this.letter = letter+":/";
         this.name = name;
         this.capacity = capacity;
 
