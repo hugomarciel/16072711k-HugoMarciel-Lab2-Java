@@ -1,7 +1,6 @@
 package org.example;
 
 
-import java.io.File;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
@@ -137,21 +136,7 @@ public class Filesystem_Marciel16072711k implements IFilesystem_Marciel16072711k
     this.currentPath = resultado;
     }
 
-    @Override
-    public String toString() {
-        return "Filesystem_Marciel16072711k{" +
-                "nombre='" + nombre + '\'' +
-                ", fechaCreacion=" + fechaCreacion +
-                ", users=" + users +
-                ", drives=" + drives +
-                ", folders=" + folders +
-                ", files=" + files +
-                ", currentUser='" + currentUser + '\'' +
-                ", isLogged=" + isLogged +
-                ", currentDrive='" + currentDrive + '\'' +
-                ", currentPath='" + currentPath + '\'' +
-                '}';
-    }
+
 
     @Override
     public void cdSlash(){
@@ -180,10 +165,55 @@ public class Filesystem_Marciel16072711k implements IFilesystem_Marciel16072711k
 
     @Override
     public void addFile(String tipo, String nombre, String extencion, String contenido) {
-        if( tipo.equals("texto") ){
-        Texto_Marciel16072711k textFile = new Texto_Marciel16072711k(tipo, nombre, extencion, contenido);
+        boolean yaexiste=false;
+        for (File_Marciel160727116k file : files){
+            if (file.getNombre().equals(nombre)){
+                file.setContenido(contenido);
+                file.setTipo(tipo);
+                yaexiste = true;
+            }
+        }
+
+        if(yaexiste==false){
+
+        if( tipo.equals("texto")){
+            TextoFile_Marciel16072711k textFile = new TextoFile_Marciel16072711k(tipo, nombre, extencion, contenido);
         files.add(textFile);
-    }    }
+    } else if (tipo.equals("documento")) {
+            DocumentFile_Marciel16072711k docFile = new DocumentFile_Marciel16072711k(tipo, nombre, extencion, contenido);
+            files.add(docFile);
+        } else if (tipo.equals("cfuente")) {
+            CfuenteFile_Marciel16072711k cfuenteFile = new CfuenteFile_Marciel16072711k(tipo, nombre, extencion, contenido);
+            files.add(cfuenteFile);
+        }
+    }}
+
+
+
+
+
+
+    @Override
+    public String toString() {
+        return "Filesystem_Marciel16072711k{" +
+                "nombre='" + nombre + '\'' +
+                ", fechaCreacion=" + fechaCreacion +
+                ", users=" + users +
+                ", drives=" + drives +
+                ", folders=" + folders +
+                ", files=" + files +
+                ", currentUser='" + currentUser + '\'' +
+                ", isLogged=" + isLogged +
+                ", currentDrive='" + currentDrive + '\'' +
+                ", currentPath='" + currentPath + '\'' +
+                '}';
+    }
+
+
+
+
+
+
 
 
 }

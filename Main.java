@@ -83,6 +83,21 @@ public class Main {
         fileSystem.addFile("texto", "archivo.txt", ".txt", "Hola mundo");
         System.out.println(fileSystem);
 
+        // cd
+        fileSystem.addFile("documento", "documento.docx", ".docx", " mundoooooo");
+        System.out.println(fileSystem);
+
+        // cd
+        fileSystem.addFile("cfuente", "cfuente.py", ".py", "interpretame");
+        System.out.println(fileSystem);
+
+        // cd
+        fileSystem.addFile("texto", "cfuente.py", ".py", "interpretamedenuevo");
+        System.out.println(fileSystem);
+
+        fileSystem.addFile("cfuente", "nuevoarchivo.py", ".py", "nuevo contenido");
+        System.out.println(fileSystem);
+
 
 
     }
