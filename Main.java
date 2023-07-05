@@ -57,10 +57,33 @@ public class Main {
         fileSystem.mkDir("folder2");
         System.out.println(fileSystem);
 
-
-// cd
+        // cd
         fileSystem.cd("folder2");
         System.out.println(fileSystem);
+
+        // cd
+        fileSystem.cd("/");
+        System.out.println(fileSystem);
+
+// cd
+        fileSystem.cd("folder1");
+        System.out.println(fileSystem);
+
+        // cd
+        fileSystem.cd("folder2");
+        System.out.println(fileSystem);
+
+
+
+// cd
+        fileSystem.cd("..");
+        System.out.println(fileSystem);
+
+// cd
+        fileSystem.addFile("texto", "archivo.txt", ".txt", "Hola mundo");
+        System.out.println(fileSystem);
+
+
 
     }
 }

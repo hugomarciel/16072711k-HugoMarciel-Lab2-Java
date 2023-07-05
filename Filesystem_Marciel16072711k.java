@@ -1,6 +1,7 @@
 package org.example;
 
 
+import java.io.File;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
@@ -20,6 +21,8 @@ public class Filesystem_Marciel16072711k implements IFilesystem_Marciel16072711k
     private List<Drive_Marciel16072711k> drives = new ArrayList<>();
 
     private List<Folder_Marciel16072711k> folders = new ArrayList<>();
+
+    private List<File_Marciel160727116k> files= new ArrayList<>();
 
     private String currentUser;
 
@@ -80,61 +83,81 @@ public class Filesystem_Marciel16072711k implements IFilesystem_Marciel16072711k
 
     @Override
     public void switchDrive(String letter) {
-        //System.out.println(letter);
-
         for (User_Marciel16072711k user : users) {
             if (user.isEstaLogeado() == true) {
                 for (Drive_Marciel16072711k drive : drives) {
-                    System.out.println(drive.getLetter());
+                    //System.out.println(drive.getLetter());
                     String str = drive.getLetter();
                     if (str.equals(letter) ) {
                        // drive.switchDrive();
                         this.currentDrive = letter;
                         this.currentPath= letter;
-
                     }
                 }
             }
         }
     }
- public void mkDir(String name){
 
+    @Override
+ public void mkDir(String name){
      Folder_Marciel16072711k folder = new Folder_Marciel16072711k(name,this.currentUser, this.currentDrive,this.currentPath );
      folders.add(folder);
-
  }
 
 
-
-    //@Override
+////////////////////////////////////////////////CD
+@Override
     public void cd(String comando) {
 
         if (comando == "..") {
-            if(this.currentDrive != this.currentPath){
-            System.out.println("Dos puntoooos");}
+            if(!this.currentDrive.equals(this.currentPath)){
+                this.cdDosPuntos();
+            }
         } else if (comando == "/") {
-            System.out.println("SLAAAASHH");
+            this.cdSlash();
         } else  {
-
             this.cdFolder( comando);
-
-
         }
     }
 
+@Override
     public void cdFolder(String folderName){
-        //System.out.println(folderName);
-        //System.out.println();
         for(Folder_Marciel16072711k folder : folders){
             if(folder.getNombre() == folderName){
                 this.currentPath = folder.getCurrentPath()+folderName+"/";
                 this.currentDrive =folder.getCurrentDrive();
             }
-
         }
-
-
     }
+@Override
+    public void cdDosPuntos(){
+    String ruta = this.currentPath;
+    int indiceSegundoSlash = ruta.lastIndexOf("/", ruta.lastIndexOf("/") - 1);
+    String resultado = ruta.substring(0, indiceSegundoSlash + 1);
+    this.currentPath = resultado;
+    }
+
+    @Override
+    public String toString() {
+        return "Filesystem_Marciel16072711k{" +
+                "nombre='" + nombre + '\'' +
+                ", fechaCreacion=" + fechaCreacion +
+                ", users=" + users +
+                ", drives=" + drives +
+                ", folders=" + folders +
+                ", files=" + files +
+                ", currentUser='" + currentUser + '\'' +
+                ", isLogged=" + isLogged +
+                ", currentDrive='" + currentDrive + '\'' +
+                ", currentPath='" + currentPath + '\'' +
+                '}';
+    }
+
+    @Override
+    public void cdSlash(){
+        this.currentPath = this.currentDrive;
+    }
+
     /*    for (User_Marciel16072711k user : users) {
             if (user.isEstaLogeado() == true) {
                 for (Drive_Marciel16072711k drive : drives) {
@@ -151,21 +174,17 @@ public class Filesystem_Marciel16072711k implements IFilesystem_Marciel16072711k
 
      */
 
+///////////////////////////////////////Fin operaciones CD
+
 
 
     @Override
-    public String toString() {
-        return "Filesystem_Marciel16072711k{" +
-                "nombre='" + nombre + '\'' +
-                ", fechaCreacion=" + fechaCreacion +
-                ", users=" + users +
-                ", drives=" + drives +
-                ", folders=" + folders +
-                ", isLogged=" + isLogged +
-                ", currentUser='" + currentUser + '\'' +
-                ", currentDrive='" + currentDrive + '\'' +
-                ", currentPath='" + currentPath + '\'' +
-                '}';
-    }
+    public void addFile(String tipo, String nombre, String extencion, String contenido) {
+        if( tipo.equals("texto") ){
+        Texto_Marciel16072711k textFile = new Texto_Marciel16072711k(tipo, nombre, extencion, contenido);
+        files.add(textFile);
+    }    }
+
+
 }
 

@@ -15,4 +15,11 @@ public interface IFilesystem_Marciel16072711k {
     void switchDrive(String letter);
 
     void mkDir(String name);
+
+    public void cd(String comando);
+    public void cdFolder(String folderName);
+    public void cdDosPuntos();
+    public void cdSlash();
+
+    public void addFile(String tipo, String nombre, String extencion, String contenido);
 }
