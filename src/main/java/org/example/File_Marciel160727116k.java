@@ -6,11 +6,22 @@ public class File_Marciel160727116k {
     private String extencion;
     private String contenido;
 
-    public File_Marciel160727116k(String tipo, String nombre, String extencion, String contenido) {
+    private String user;
+
+    private String drive;
+
+    private String path;
+
+
+
+    public File_Marciel160727116k(String tipo, String nombre, String extencion, String contenido, String user, String drive, String path) {
         this.tipo = tipo;
         this.nombre = nombre;
         this.extencion = extencion;
         this.contenido = contenido;
+        this.user = user;
+        this.drive = drive;
+        this.path = path;
     }
 
     public String getTipo() {
@@ -45,6 +56,30 @@ public class File_Marciel160727116k {
         this.contenido = contenido;
     }
 
+    public String getDrive() {
+        return drive;
+    }
+
+    public void setDrive(String drive) {
+        this.drive = drive;
+    }
+
+    public String getPath() {
+        return path;
+    }
+
+    public void setPath(String path) {
+        this.path = path;
+    }
+
+    public String getUser() {
+        return user;
+    }
+
+    public void setUser(String user) {
+        this.user = user;
+    }
+
     @Override
     public String toString() {
         return "File_Marciel160727116k{" +
@@ -52,6 +87,9 @@ public class File_Marciel160727116k {
                 ", nombre='" + nombre + '\'' +
                 ", extencion='" + extencion + '\'' +
                 ", contenido='" + contenido + '\'' +
+                ", user='" + user + '\'' +
+                ", drive='" + drive + '\'' +
+                ", path='" + path + '\'' +
                 '}';
     }
 }

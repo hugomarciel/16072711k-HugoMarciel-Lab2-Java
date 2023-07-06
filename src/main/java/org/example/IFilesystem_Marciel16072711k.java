@@ -22,4 +22,11 @@ public interface IFilesystem_Marciel16072711k {
     public void cdSlash();
 
     public void addFile(String tipo, String nombre, String extencion, String contenido);
+    public void del(String target);
+    public void copy(String target, String newPath);
+    public void addCopyFile(File_Marciel160727116k file, String newPath);
+    public void addCopyFolder(Folder_Marciel16072711k folderFound, String newPath);
+    public void move(String target, String newPath);
+    public void addMoveFile(File_Marciel160727116k file, String newPath);
+    public void addMoveFolder(Folder_Marciel16072711k folderFound, String newPath);
 }

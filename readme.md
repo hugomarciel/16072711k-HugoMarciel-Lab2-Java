@@ -1,2 +1,21 @@
-# Lab3ParadigmaOrientadoObjetoHugoMarciel
-En esterepositorio se encuentra toda la documentacion  y codigo de la realizacion del laboratorio de paradigmas de programacion para la creacion de un sistema de archivos con la utilizacion del paradigma orientado a objetos utilizando lenguaje Java. 
+# Project Template Java Menu
+
+This project works with Gradle.
+
+## Build
+
+Linux and MacOS
+
+```
+./gradlew build
+```
+
+## Run
+
+Linux and MacOS
+
+```
+./gradlew run
+```
+
+If you use Windows, execute the gradlew.bat
